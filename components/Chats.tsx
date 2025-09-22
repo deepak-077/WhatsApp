@@ -1,21 +1,15 @@
 const chats=[
   {
-    name:"Tokyo",
+    name:"Siri",
     img:'one.jpg',
     msg: "hii",
     time:'11:50 am'
   },
   {
-    name:"Jess",
+    name:"Alexa",
     img:'two.jpg',
     msg: "Are you coming today?",
     time:'10:20 am'
-  },
-  {
-    name:"Alex",
-    img:'three.jpg',
-    msg: "Hey ",
-    time:'10:11 am'
   },
   {
     name:"Zach",
@@ -48,6 +42,12 @@ const chats=[
     time:'yesterday'
   },
   {
+    name:"Alex",
+    img:'three.jpg',
+    msg: "Hey ",
+    time:'10:11 am'
+  },
+  {
     name:"Steve",
     img:'me.jpg',
     msg: "hii",
@@ -69,7 +69,7 @@ export default function Chat(){
               {/* chats */}
               {chats.map((item,index)=>(
 
-              <div className="max-w-[408.8px] h-[72px] text-white flex items-center hover:bg-[#FFFFFF1A]  rounded-2xl">
+              <div className="max-w-[440px] h-[72px] text-white flex items-center hover:bg-[#FFFFFF1A] rounded-2xl">
                 
                 {/* dp */}
                 <div className="max-w-[77px] w-full h-[73px] mt-[-1px] pr-[15px] pl-[13px] flex items-center">
@@ -77,23 +77,23 @@ export default function Chat(){
                 </div>
 
                 {/* contact and chat message */}
-                <div className="max-w-[311.8px] w-full h-[72px] pr-[15px] flex flex-col justify-center items-center">
+                <div className="max-w-[343px] w-full h-[72px] pr-[15px] flex flex-col justify-center items-center">
 
                   {/* contact name and time */}
-                  <div className=" max-w-[296.8px] w-full h-[24px] flex items-center">
+                  <div className=" max-w-[328px] w-full h-[24px] flex items-center">
                     {/* contact name */}
-                    <div className=" max-w-[235px] w-full h-[24px] flex items-center ">
+                    <div className=" max-w-[275px] w-full h-[24px] flex items-center ">
                       <span> {item.name} </span>
                       
                     </div>
 
                     {/* time */}
-                    <div className=" max-w-[55.75px] h-[14px] mt-[3px] ml-[6px] text-xs">
+                    <div className=" max-w-[57.75px] h-[14px] mt-[3px] ml-[6px] text-xs text-[#FFFFFF99] whitespace-nowrap">
                       {item.time}
                     </div>
                   </div>
 
-                  <span className="max-w-[290.8px] w-full h-20px text-sm"> {item.msg}</span>
+                  <span className="max-w-[322px] w-full h-20px text-sm"> {item.msg}</span>
 
                 </div>
 

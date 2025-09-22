@@ -1,6 +1,6 @@
 function Chatwindow(){
     return(
-        <div className="max-w-[890.2] w-full py-[28px] h-screen text-white flex flex-col gap-2 items-center justify-center border border-amber-300">
+        <div className="max-w-[890.2] w-full py-[28px] h-screen text-white flex flex-col gap-2 items-center justify-center">
 
             <div className="max-w-[560px] w-full h-[310px] mt-[-20px]">
 
@@ -29,9 +29,9 @@ function Chatwindow(){
             
             </div>
 
-            <div className="h-[22.3px] text-sm text-white">
-                    <img src="" alt="" />
-                    <div className="">Your personal messages are end-to-end encrypted</div>
+            <div className="h-[22.3px] text-sm text-white flex">
+                    <img className="size-5" src="lock.png" alt="" />
+                    <div className="text-[#ffffff99] font-semibold">Your personal messages are end-to-end encrypted</div>
             </div>
             
 
