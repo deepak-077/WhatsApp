@@ -59,13 +59,25 @@ const chats=[
     msg: "hii",
     time:'yesterday'
   },
+  {
+    name:"Random",
+    img:'random.jpg',
+    msg: "hola",
+    time:'yesterday'
+  },
+  {
+    name:"Random3",
+    img:'random.jpg',
+    msg: "ciao",
+    time:'yesterday'
+  },
 
 ]
 
 
 export default function Chat(){
     return (
-        <>
+        <div className="max-w-[440px] w-full max-h-[650px] overflow-y-auto whitespace-nowrap">
               {/* chats */}
               {chats.map((item,index)=>(
 
@@ -99,7 +111,7 @@ export default function Chat(){
 
               </div>
               ))}
-        </>
+        </div>
     )
     
 }
