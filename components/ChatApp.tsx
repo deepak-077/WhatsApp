@@ -11,43 +11,37 @@ const chats=[
   {
     name:"Siri",
     img:'one.jpg',
-    msg: "hii",
+    msg: "Hii",
     time:'11:50 am'
   },
   {
     name:"Alexa",
     img:'two.jpg',
-    msg: "Are you coming today?",
+    msg: "Hola",
     time:'10:20 am'
   },
   {
     name:"Zach",
     img:'four.jpg',
-    msg: "Bye",
+    msg: "Salut",
     time:'yesterday'
   },
   {
     name:"Aniket",
     img:'aniket.jpg',
-    msg: "ok done",
+    msg: "Hallo",
     time:'yesterday'
   },
   {
     name:"Chris",
     img:'chris.jpg',
-    msg: "Whatsupp buddy",
+    msg: "Ciao",
     time:'yesterday'
   },
   {
     name:"Taylor",
     img:'taylor.jpg',
-    msg: "hii",
-    time:'yesterday'
-  },
-  {
-    name:"Sachin",
-    img:'sachin.jpg',
-    msg: "hii",
+    msg: "Ola",
     time:'yesterday'
   },
   {
@@ -57,21 +51,27 @@ const chats=[
     time:'10:11 am'
   },
   {
+    name:"Sachin",
+    img:'sachin.jpg',
+    msg: "नमस्ते",
+    time:'yesterday'
+  },
+  {
     name:"Steve",
     img:'me.jpg',
-    msg: "hii",
+    msg: "こんにちは",
     time:'yesterday'
   },
   {
     name:"Unknown",
     img:'random.jpg',
-    msg: "hii",
+    msg: "안녕하세요",
     time:'yesterday'
   },
   {
     name:"Random",
     img:'random.jpg',
-    msg: "hola",
+    msg: "Adios",
     time:'yesterday'
   },
   {
