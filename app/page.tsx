@@ -1,5 +1,6 @@
 import Chat from "@/components/Chats";
 import Header from "@/components/Header";
+import Banner from "@/components/Banner";
 import Chatwindow from "@/components/Chatwindow";
 import Sidebar from "@/components/Sidebar";
 
@@ -19,6 +20,7 @@ export default function Home() {
 
       {/* chat window */}
         <Chatwindow/>
+        {/* <Banner/> */}
 
       
 
