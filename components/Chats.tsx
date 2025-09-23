@@ -1,87 +1,12 @@
-const chats=[
-  {
-    name:"Siri",
-    img:'one.jpg',
-    msg: "hii",
-    time:'11:50 am'
-  },
-  {
-    name:"Alexa",
-    img:'two.jpg',
-    msg: "Are you coming today?",
-    time:'10:20 am'
-  },
-  {
-    name:"Zach",
-    img:'four.jpg',
-    msg: "Bye",
-    time:'yesterday'
-  },
-  {
-    name:"Aniket",
-    img:'aniket.jpg',
-    msg: "ok done",
-    time:'yesterday'
-  },
-  {
-    name:"Chris",
-    img:'chris.jpg',
-    msg: "Whatsupp buddy",
-    time:'yesterday'
-  },
-  {
-    name:"Taylor",
-    img:'taylor.jpg',
-    msg: "hii",
-    time:'yesterday'
-  },
-  {
-    name:"Sachin",
-    img:'sachin.jpg',
-    msg: "hii",
-    time:'yesterday'
-  },
-  {
-    name:"Alex",
-    img:'three.jpg',
-    msg: "Hey ",
-    time:'10:11 am'
-  },
-  {
-    name:"Steve",
-    img:'me.jpg',
-    msg: "hii",
-    time:'yesterday'
-  },
-  {
-    name:"Unknown",
-    img:'random.jpg',
-    msg: "hii",
-    time:'yesterday'
-  },
-  {
-    name:"Random",
-    img:'random.jpg',
-    msg: "hola",
-    time:'yesterday'
-  },
-  {
-    name:"Random3",
-    img:'random.jpg',
-    msg: "ciao",
-    time:'yesterday'
-  },
-
-]
-
-
-export default function Chat(){
+'use client'
+export default function Chat({chats , onSelectChat}){
     return (
         <div className="max-w-[440px] w-full max-h-[650px] overflow-y-auto whitespace-nowrap">
               {/* chats */}
-              {chats.map((item,index)=>(
+              {chats?.map((item,index)=>(
 
-              <div className="max-w-[440px] h-[72px] text-white flex items-center hover:bg-[#FFFFFF1A] rounded-2xl">
+              <div key={index} className="max-w-[440px] h-[72px] text-white flex items-center hover:bg-[#FFFFFF1A] rounded-2xl"
+              onClick={()=>onSelectChat(item)}>
                 
                 {/* dp */}
                 <div className="max-w-[77px] w-full h-[73px] mt-[-1px] pr-[15px] pl-[13px] flex items-center">

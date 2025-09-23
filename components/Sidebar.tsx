@@ -1,6 +1,6 @@
 function Sidebar(){
     return(
-        <div className="w-[100px] h-screen flex flex-col items-center justify-between   p-2.5">
+        <div className="w-[70px] h-screen flex flex-col items-center justify-between   p-2.5">
             <div className="w-[40px]">
 
                 <div className="w-[40px] h-[238px]  pt-2.5">

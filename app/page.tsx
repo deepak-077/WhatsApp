@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Banner from "@/components/Banner";
 import Chatwindow from "@/components/Chatwindow";
 import Sidebar from "@/components/Sidebar";
+import ChatApp from "@/components/ChatApp";
 
 export default function Home() {
   return (
@@ -11,15 +12,15 @@ export default function Home() {
       <Sidebar/>
 
       {/* chats */}
-      <div className="max-w-[440px] w-full border border-[#262626]">
+      {/* <div className="max-w-[440px] w-full border border-[#262626]">
         <Header/>
-        <Chat/>      
         
-
-      </div>
+      </div> */}
 
       {/* chat window */}
-        <Chatwindow/>
+
+      <ChatApp/>
+       
         {/* <Banner/> */}
 
       

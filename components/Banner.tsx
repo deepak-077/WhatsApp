@@ -1,6 +1,6 @@
 function Banner(){
     return(
-        <div className="max-w-[963px] w-full py-[28px] h-screen text-white flex flex-col gap-2 items-center ">
+        <div className=" max-w-[963px] w-full py-[28px] h-screen text-white flex flex-col gap-2 items-center">
 
             <div className="flex-1 flex flex-col items-center justify-center">
 

@@ -1,36 +1,34 @@
-function Chatwindow(){
+function Chatwindow({chat}){
     return (
-        <div className="  ">
+        <div className="flex flex-col h-screen items-center ">
 
-            {/* older chats */}
-            <div className="max-w-[963px] w-full pb-2 h-screen">
-                
-                {/* contact info */}
-                <div className="max-w-[963px] w-full py-2.5 px-4 h-[64px] bg-yellow-300">
+            {/* contact info */}
+                <div className="max-w-[963px] w-full py-2.5 px-4 h-[64px]  flex items-center">
                     {/* dp */}
                     <div className=" max-w-[55px] w-full mt-[-1px] pr-[15px] h-[40px]">
-                        <img className="size-10" src="" alt="picture" />
+                        <img className="size-10 rounded-full" src={chat?.img} alt="picture" />
 
                     </div>
 
                     {/* name */}
-                    <div className="max-w-[682px] w-full h-[21px]">
+                    <div className="max-w-[682px] w-full h-[21px] text-white font-bold">
+                        {chat?.name}
 
                     </div>
 
                     {/* calling & search */}
-                    <div className="max-w-[174px] w-full h-[40px]">
+                    <div className="max-w-[174px] w-full h-[40px] flex gap-1.5">
 
                         {/* calling options */}
                         <div className="max-w-[64px] w-full h-[40px] ml-2.5 py-2 pr-1.5 pl-2.5">
 
-                            <div className="w-[48px] h-[24px]">
+                            <div className="w-[48px] h-[24px] flex items-center">
                                 <span className="w-[24px] h-[24px]">
-                                    <img src="" alt="video" />
+                                    <img className="w-[24px] h-[24px]" src="video.png" alt="video" />
 
                                 </span>
-                            <span className="w-[20px] h-[20px] ml-1">
-                                <img src="" alt="" />
+                            <span className="w-[20px] h-[20px] ml-1 flex items-center">
+                                <img className="w-[18px] h-[18px]" src="down.png" alt="" />
 
                             </span>
                             </div>
@@ -51,10 +49,34 @@ function Chatwindow(){
 
                 </div>
 
+            {/* older chats */}
+            <div className="max-w-[964px] w-full pb-2 flex-1 bg-amber-300">
+                
+                
+
             </div>
 
             {/* type a message */}
             <div className="max-w-[963px] w-full pb-2 h-[64px]  ">
+                <div className="max-w-[939px] w-full h-[52px] bg-[#262626] rounded-4xl mx-3 mb-3 p-[5px] flex items-center">
+
+                    {/* Send items */}
+                    <button className="w-[40px] h-[40px] p-2">
+                        <img className="w-[24px] h-[24px]" src="plus.png" alt="add" />
+                    </button>
+
+                    {/* Stickers */}
+                    <button className="w-[40px] h-[40px] p-2">
+                        <img className="w-[24px] h-[24px]" src="sticker.png" alt="stickers" />
+                    </button>
+
+                    <p className="w-[796px] h-[22px] text-[#FFFFFF99] text-sm">Type a message</p>
+
+                    <button className="w-[40px] h-[40px]">
+                        <img className="w-[24px] h-[24px]" src="mic.png" alt="mic" />
+                    </button>
+
+                </div>
 
             </div>
         </div>
