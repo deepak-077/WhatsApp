@@ -21,7 +21,7 @@ function Chatwindow({chat, currentUser}){
                 if(!updated[from]){
                     updated[from]=[];
                 }
-                updated[from] = [...updated[form],{from, text: messageText}];
+                updated[from] = [...updated[from],{from, text: messageText}];
                 return updated
             })
         }
@@ -55,7 +55,7 @@ function Chatwindow({chat, currentUser}){
 
 
     return (
-        <div className="flex flex-col h-screen items-center ">
+        <div className="flex flex-col h-screen items-center overflow-hidden">
 
             {/* contact info */}
                 <div className="max-w-[963px] w-full py-2.5 px-4 h-[64px]  flex items-center">
@@ -105,17 +105,17 @@ function Chatwindow({chat, currentUser}){
                 </div>
 
             {/* older chats */}
-            <div className="max-w-[964px] w-full pb-2 flex-1">
-                <div className="flex-1 overflow-y-auto bg-black w-full p-4 text-white">
+            <div className="max-w-[964px] w-full flex-1 overflow-y-auto bg-black p-4 text-white">
                 {currentChatMessages.map((msg, idx) => (
                     <div key={idx} className="mb-2">
                         <strong>{msg.from}:</strong> {msg.text}
                     </div>
                  ))}
-                </div>
+                
             </div>
 
             {/* type a message */}
+            {/* should increase max height to 188px */}
             <div className="max-w-[963px] w-full pb-2 h-[64px]  ">
                 <div className="max-w-[939px] w-full h-[52px] bg-[#262626] rounded-4xl mx-3 mb-3 p-[5px] flex items-center">
 
@@ -129,8 +129,16 @@ function Chatwindow({chat, currentUser}){
                         <img className="w-[24px] h-[24px]" src="sticker.png" alt="stickers" />
                     </button>
 
-                    <input value={input} onChange={e =>setInput(e.target.value)} placeholder= "Type a message"
-                    className="w-[796px] h-[22px] text-[#FFFFFF99] text-sm"/> 
+                    <textarea value={input} onChange={e =>setInput(e.target.value)} 
+                    onKeyDown={(e)=>{
+                        if(e.key==='Enter' && !e.shiftKey){
+                            // e.preventDefault();
+                            handleSend()
+                        }
+                    }}
+                    
+                    placeholder= "Type a message"
+                    className="w-[796px] h-[22px] text-[#FFFFFF99] text-sm resize-none"/> 
 
                     <button className="w-[40px] h-[40px]">
                         <img className="w-[24px] h-[24px]" src="mic.png" alt="mic" />
