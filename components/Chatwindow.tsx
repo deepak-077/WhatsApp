@@ -1,4 +1,59 @@
-function Chatwindow({chat}){
+'use client'
+
+import { io } from "socket.io-client"
+import { useEffect,useState } from "react"
+
+const socket=io("http://localhost:3001")
+
+function Chatwindow({chat, currentUser}){
+
+    const [allMessages,setAllMessages] = useState({});
+    const [input,setInput]=useState("");
+
+    const currentChatMessages = allMessages[chat.name] || [];
+
+
+    useEffect(()=>{
+
+        const handleMessage = ({from ,messageText}) =>{
+            setAllMessages(prev=>{
+                const updated ={...prev };
+                if(!updated[from]){
+                    updated[from]=[];
+                }
+                updated[from] = [...updated[form],{from, text: messageText}];
+                return updated
+            })
+        }
+
+        socket.on("private message", handleMessage);
+
+        return ()=>{
+            socket.off("private message",handleMessage);
+        };
+    },[])
+
+
+    function handleSend(){
+        socket.emit("private message", {
+            messageText: input,
+            receipient: chat.name
+        });
+
+        setAllMessages(prev =>{
+            const updated = {...prev};
+            
+            if(!updated[chat.name]){
+                updated[chat.name]=[];
+
+            }
+            updated[chat.name]=[...updated[chat.name], { from: currentUser || "You", text: input }]
+            return updated;
+        })
+        setInput("");
+    }
+
+
     return (
         <div className="flex flex-col h-screen items-center ">
 
@@ -50,10 +105,14 @@ function Chatwindow({chat}){
                 </div>
 
             {/* older chats */}
-            <div className="max-w-[964px] w-full pb-2 flex-1 bg-amber-300">
-                
-                
-
+            <div className="max-w-[964px] w-full pb-2 flex-1">
+                <div className="flex-1 overflow-y-auto bg-black w-full p-4 text-white">
+                {currentChatMessages.map((msg, idx) => (
+                    <div key={idx} className="mb-2">
+                        <strong>{msg.from}:</strong> {msg.text}
+                    </div>
+                 ))}
+                </div>
             </div>
 
             {/* type a message */}
@@ -70,10 +129,17 @@ function Chatwindow({chat}){
                         <img className="w-[24px] h-[24px]" src="sticker.png" alt="stickers" />
                     </button>
 
-                    <p className="w-[796px] h-[22px] text-[#FFFFFF99] text-sm">Type a message</p>
+                    <input value={input} onChange={e =>setInput(e.target.value)} placeholder= "Type a message"
+                    className="w-[796px] h-[22px] text-[#FFFFFF99] text-sm"/> 
 
                     <button className="w-[40px] h-[40px]">
                         <img className="w-[24px] h-[24px]" src="mic.png" alt="mic" />
+                    </button>
+
+                    {/* send */}
+                    <button className="w-[40px] h-[40px] bg-[#21c063] rounded-full flex justify-center items-center"
+                    onClick={handleSend}>
+                        <img className="w-[20px] h-[20px]" src="send.png" alt="mic" />
                     </button>
 
                 </div>
