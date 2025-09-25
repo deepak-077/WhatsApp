@@ -32,7 +32,14 @@ function Chatwindow({ chat, currentUser }) {
         };
     }, []);
 
-    
+    //auto scroll to newer messages
+    const messagesEndref= useRef(null);
+
+    useEffect(()=>{
+        if(messagesEndref.current){
+            messagesEndref.current.scrollIntoView({behaviour:'auto'});
+        }
+    },[currentChatMessages]);
 
 
     function handleSend() {
