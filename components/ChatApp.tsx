@@ -22,13 +22,13 @@ const chats=[
     time:'10:20 am'
   },
   {
-    name:"Zach",
+    name:"Hulk",
     img:'four.jpg',
     msg: "Salut",
     time:'yesterday'
   },
   {
-    name:"Aniket",
+    name:"Thor",
     img:'aniket.jpg',
     msg: "Hallo",
     time:'yesterday'
@@ -46,7 +46,7 @@ const chats=[
     time:'yesterday'
   },
   {
-    name:"Alex",
+    name:"Captain America",
     img:'three.jpg',
     msg: "Hey ",
     time:'10:11 am'
@@ -58,7 +58,7 @@ const chats=[
     time:'yesterday'
   },
   {
-    name:"Steve",
+    name:"Iron Man",
     img:'me.jpg',
     msg: "こんにちは",
     time:'yesterday'
