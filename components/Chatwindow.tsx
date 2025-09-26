@@ -118,9 +118,9 @@ function Chatwindow({ chat, currentUser }) {
                 <div ref={messagesEndref}></div>
             </div>
 
-            {/* input area */}
+            {/* type a message */}
             <div className="max-w-[963px] w-full pb-2 max-h-[188px]">
-                <div className="max-w-[939px] w-full bg-[#262626] rounded-4xl mx-3 mb-3 p-[5px] flex items-center">
+                <div className="max-w-[939px] w-full bg-[#262626] rounded-4xl mx-3 mb-3 p-[5px] flex items-end">
 
                     <button className="w-[40px] h-[40px] p-2">
                         <img className="w-[24px] h-[24px]" src="plus.png" alt="add" />
