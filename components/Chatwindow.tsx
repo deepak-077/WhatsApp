@@ -34,12 +34,18 @@ function Chatwindow({ chat, currentUser }) {
 
     //auto scroll to newer messages
     const messagesEndref= useRef(null);
+    const messageContainerRef= useRef(null);
 
     useEffect(()=>{
-        if(messagesEndref.current){
-            messagesEndref.current.scrollIntoView({behaviour:'auto'});
+        const container= messageContainerRef.current;
+
+        // checking is autoscrolling is needed
+        const isScrollable = container && container.scrollHeight > container.clientHeight;
+
+        if(isScrollable && messagesEndref.current){
+            messagesEndref.current.scrollIntoView({behavior:'auto'});
         }
-    },[currentChatMessages]);
+    },[currentChatMessages.length]);
 
 
     function handleSend() {
@@ -108,7 +114,8 @@ function Chatwindow({ chat, currentUser }) {
             </div>
 
             {/* older messages */}
-            <div className="max-w-[964px] w-full flex-1 overflow-y-auto bg-black p-4 text-white">
+            <div ref={messageContainerRef} 
+            className="max-w-[964px] w-full flex-1 overflow-y-auto bg-black p-4 text-white">
                 {currentChatMessages.map((msg, idx) => (
                     <div key={idx} className="mb-2">
                         <strong>{msg.from}:</strong> {msg.text}
