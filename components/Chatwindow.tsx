@@ -3,15 +3,19 @@
 import { io } from "socket.io-client"
 import { useRef, useEffect, useState } from "react"
 
+
 const socket = io("http://localhost:3001")
 
 function Chatwindow({ chat, currentUser }) {
     const [allMessages, setAllMessages] = useState({});
     const [input, setInput] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    const [showSearch, setShowSearch] = useState(false);
 
     const textArea = useRef(null);
     
-    const currentChatMessages = allMessages[chat.name] || [];
+    const ChatMessages = allMessages[chat.name] || [];
+    const currentChatMessages = searchTerm ? ChatMessages.filter(msg => msg.text.toLowerCase().includes(searchTerm.toLowerCase())):ChatMessages
 
     useEffect(() => {
         const handleMessage = ({ from, messageText }) => {
@@ -20,7 +24,7 @@ function Chatwindow({ chat, currentUser }) {
                 if (!updated[from]) {
                     updated[from] = [];
                 }
-                updated[from] = [...updated[from], { from, text: messageText }];
+                updated[from] = [...updated[from], { from, text: messageText, timestamp:new Date().toISOString() }];
                 return updated;
             });
         };
@@ -63,7 +67,7 @@ function Chatwindow({ chat, currentUser }) {
                 updated[chat.name] = [];
             }
 
-            updated[chat.name] = [...updated[chat.name], { from: currentUser || "You", text: input }];
+            updated[chat.name] = [...updated[chat.name], { from: currentUser || "You", text: input, timestamp: new Date().toISOString() }];
             return updated;
         });
 
@@ -103,7 +107,8 @@ function Chatwindow({ chat, currentUser }) {
                         </div>
                     </div>
 
-                    <button className="w-[40px] h-[40px] p-2">
+                    {/* search */}
+                    <button className="w-[40px] h-[40px] p-2" onClick={()=> setShowSearch(prev => !prev)}>
                         <img className="w-[24px] h-[24px]" src="search.png" alt="search" />
                     </button>
 
@@ -116,9 +121,41 @@ function Chatwindow({ chat, currentUser }) {
             {/* older messages */}
             <div ref={messageContainerRef} 
             className="max-w-[964px] w-full flex-1 overflow-y-auto bg-black p-4 text-white">
+                
+                {showSearch && (
+                <div className="w-full max-w-[964px] mb-2">
+                    <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Search messages..."
+                    className="w-full px-4 py-2 rounded-md bg-[#1e1e1e] text-white placeholder-[#888] border border-[#444] focus:outline-none"
+                    />
+                </div>
+                )}
+
+
                 {currentChatMessages.map((msg, idx) => (
-                    <div key={idx} className="mb-2">
-                        <strong>{msg.from}:</strong> {msg.text}
+                    <div key={idx} className="flex">
+                        <span className="bg-[#164b3b] rounded-lg pt-1.5 pr-[7px] pb-2 pl-[9px] w-auto flex gap-2">
+
+                            {/* highlighting logic */}
+                            <span className="text-sm">
+                            {msg.from}{" "}
+                            {searchTerm ? (
+                            <span
+                                dangerouslySetInnerHTML={{
+                                __html: msg.text.replace(
+                                new RegExp(`(${searchTerm})`, "gi"),
+                                `<mark class="bg-yellow-300 text-black">$1</mark>`
+                            )
+                        }}
+                            />
+                            ) : ( msg.text )}
+                            </span>
+                            <span className="text-[11px] text-[#FFFFFF99] self-end ">{msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString('en-US', {hour:'numeric',minute:'numeric', hour12: true }):' '}</span>
+                        </span>
+                        
                     </div>
                 ))}
 
