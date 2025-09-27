@@ -88,6 +88,9 @@ function ChatApp(){
     const [selectedChat, setSelectedChat]=useState(null);
     const [currentUser, setCurrentUser]=useState('');
 
+    const [searchContact,setSearchContact] =useState("");
+    const filterContact = chats.filter(chat => chat.name.toLowerCase().includes(searchContact.toLowerCase()))
+
     useEffect(()=>{
       const myName='alpha';
       setCurrentUser(myName);
@@ -97,27 +100,10 @@ function ChatApp(){
     return (
 
         <div className="flex h-screen">
-
-          {/* <div className="p-4 text-white">
-  <h2>Select yourself:</h2>
-  {chats.map((user) => (
-    <button
-      key={user.name}
-      onClick={() => {
-        setCurrentUser(user.name);
-        socket.emit("register", user.name);
-      }}
-      className="m-1 p-2 bg-blue-500 rounded"
-    >
-      {user.name}
-    </button>
-  ))}
-</div> */}
-
-            
+  
             {/* Left: chat list */}
             <div className="w-[440px] border border-[#262626]">
-                <Header/>
+                <Header searchContact={searchContact} setSearchContact={setSearchContact}/>
                 <Chat chats={chats} onSelectChat={setSelectedChat} />
             </div>
 

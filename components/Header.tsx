@@ -1,4 +1,4 @@
-function Header(){
+function Header(searchContact, setSearchContact){
     return (
         <>
         {/* whatsapp logo */}
@@ -30,7 +30,12 @@ function Header(){
 
                   <div className="max-w-[400px] w-full h-[40px] mb-[5px] px-5 bg-[#FFFFFF1A] rounded-full pl-[46px] flex items-center gap-2">
                     <img className="size-5" src="search.png" alt="search icon" />
-                    <p className="max-w-[354px] w-full h-[22px] text-white text-sm"> Search or start new chat</p>                
+                    <input 
+                    type="text"
+                    value={searchContact}
+                    onChange={(e)=>setSearchContact(e.target.value)}
+                    placeholder="Search or start new chat"
+                    className="max-w-[354px] w-full h-[22px] text-white text-sm focus:outline-none"> </input>                
                   </div>
 
                 </div>
