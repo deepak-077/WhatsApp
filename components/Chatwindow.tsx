@@ -6,10 +6,10 @@ import { useRef, useEffect, useState } from "react"
 
 const socket = io("http://localhost:3001")
 
-function Chatwindow({ chat, currentUser }) {
+function Chatwindow({ chat, currentUser, searchTerm, setSearchTerm }) {
     const [allMessages, setAllMessages] = useState({});
     const [input, setInput] = useState("");
-    const [searchTerm, setSearchTerm] = useState("");
+    
     const [showSearch, setShowSearch] = useState(false);
 
     const textArea = useRef(null);
@@ -67,7 +67,7 @@ function Chatwindow({ chat, currentUser }) {
                 updated[chat.name] = [];
             }
 
-            updated[chat.name] = [...updated[chat.name], { from: currentUser || "You", text: input, timestamp: new Date().toISOString() }];
+            updated[chat.name] = [...updated[chat.name], { text: input, timestamp: new Date().toISOString() }];
             return updated;
         });
 

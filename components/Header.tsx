@@ -1,4 +1,23 @@
-function Header(searchContact, setSearchContact){
+"use client"
+import { useState } from "react";
+function Header({chats, searchTerm, setSearchTerm}){
+
+  
+
+  const searchItem = searchTerm ? chats.filter(item=> { 
+    return item.name.toLowerCase().includes(searchTerm.toLowerCase()) })
+    :chats
+
+    if(searchItem.length>0){
+      console.log("found");
+
+    }
+    else{
+      console.log("Not found");
+      
+    }
+  
+
     return (
         <>
         {/* whatsapp logo */}
@@ -31,11 +50,11 @@ function Header(searchContact, setSearchContact){
                   <div className="max-w-[400px] w-full h-[40px] mb-[5px] px-5 bg-[#FFFFFF1A] rounded-full pl-[46px] flex items-center gap-2">
                     <img className="size-5" src="search.png" alt="search icon" />
                     <input 
-                    type="text"
-                    value={searchContact}
-                    onChange={(e)=>setSearchContact(e.target.value)}
-                    placeholder="Search or start new chat"
-                    className="max-w-[354px] w-full h-[22px] text-white text-sm focus:outline-none"> </input>                
+                    type="text" placeholder="Search or start new chat"
+                    className="max-w-[354px] w-full h-[22px] text-white text-sm focus:outline-none"
+                    value={searchTerm} onChange={(e)=>{
+                      setSearchTerm(e.target.value);
+                    }}/>
                   </div>
 
                 </div>

@@ -89,6 +89,8 @@ function ChatApp(){
     const [currentUser, setCurrentUser]=useState('');
 
     const [searchContact,setSearchContact] =useState("");
+    const [searchTerm, setSearchTerm] = useState('');
+
     const filterContact = chats.filter(chat => chat.name.toLowerCase().includes(searchContact.toLowerCase()))
 
     useEffect(()=>{
@@ -103,15 +105,15 @@ function ChatApp(){
   
             {/* Left: chat list */}
             <div className="w-[440px] border border-[#262626]">
-                <Header searchContact={searchContact} setSearchContact={setSearchContact}/>
-                <Chat chats={chats} onSelectChat={setSelectedChat} />
+                <Header chats={chats} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+                <Chat chats={chats} onSelectChat={setSelectedChat} searchTerm={searchTerm} />
             </div>
 
             {/* Right: chat window */}
             <div className="bg-[#121212]">
                 {
                     selectedChat
-                    ?<Chatwindow chat={selectedChat} currentUser={setCurrentUser}/>
+                    ?<Chatwindow chat={selectedChat} currentUser={currentUser} searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
                     :<Banner/>
                 }
             </div>
